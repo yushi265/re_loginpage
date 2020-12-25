@@ -1,9 +1,18 @@
 <?php
-
 session_start();
+require_once('../classes/UserLogic.php');
+require_once('../functions.php');
 
 //ログインしているか判定し、していなかったら新規登録画面を返す
-$resul = UserLogic::checkLogin();
+$result = UserLogic::checkLogin();
+
+if(!$result) {
+    $_SESSION['login_err'] = 'ユーザーを登録してください！';
+    header('Location: signup_form.php');
+    return;
+}
+
+$login_user = $_SESSION['login_user'];
 
 ?>
 

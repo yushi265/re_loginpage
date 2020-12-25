@@ -6,6 +6,7 @@ require_once('../classes/UserLogic.php');
 
 //エラーメッセージ
 $err = [];
+
 //バリデーション
 if(!$email = filter_input(INPUT_POST, 'email')) {
   $err['email'] = 'メールアドレスを入力してください。';

@@ -2,7 +2,19 @@
 
 session_start();
 
+require_once('../classes/UserLogic.php');
+
+$result = UserLogic::checkLogin();
+if($result) {
+  header('Location: mypage.php');
+  return;
+}
+
 $err = $_SESSION;
+
+//セッションを消す
+$_SESSION = array();
+session_destroy();
 
 ?>
 
